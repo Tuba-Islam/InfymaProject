@@ -31,7 +31,6 @@ This project was developed for the **Infyma AI Hackathon 2025**. It focuses on d
     pip install -r requirements.txt
 
 3-Download and place the dataset in the data/ directory.
-
 📊 Model Pipeline
 1️⃣ Data Processing & Augmentation
 
@@ -56,6 +55,7 @@ jupyter notebook notebooks/model_training.ipynb
     Loss Function: Sparse Categorical Crossentropy
     Epochs: 20
     Batch Size: 32
+
 📊 Evaluation & Explainability
 
 🔹 Overall Accuracy: 35%
@@ -97,7 +97,9 @@ Run the web app:
     Upload a retinal image, and the app will classify its severity.
 
 🖼️ Sample Output (App Working)
+Demo GIF:
 
+Model Output Example:
 
 📌 Upload a retinal image to get a prediction!
 📜 Hackathon Rules & Guidelines
@@ -122,5 +124,7 @@ Run the web app:
         ✅ report.pdf (Explaining approach)
 
 📜 License
+
+This project is open-source and available under the MIT License.
 
 This project is open-source and available under the MIT License.
