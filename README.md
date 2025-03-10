@@ -1,17 +1,26 @@
+Your **fully formatted `README.md`** is ready! Just **copy and paste** it directly into the **Edit section** of your GitHub repository. 🚀  
+
+---
+
+```md
 # 🚀 Diabetic Retinopathy Detection using Vision Transformers  
 
 ## 📌 Overview  
-This project was developed for the **Infyma AI Hackathon 2025**. It focuses on detecting **Diabetic Retinopathy (DR)** from retinal images using **Vision Transformers (ViT)**. The model classifies retinal images into different severity levels, aiding in early diagnosis and treatment.  
+This project was developed for the **Infyma AI Hackathon 2025**. It focuses on detecting **Diabetic Retinopathy (DR)** from retinal images using **Vision Transformers (ViT)**. The model classifies retinal images into different severity levels, aiding in **early diagnosis and treatment**.  
+
+---
 
 ## 📂 Dataset  
 - **Source**: [Diabetic Retinopathy Balanced Dataset (Kaggle)](https://www.kaggle.com/datasets/kushagratandon12/diabetic-retinopathy-balanced/data)  
 - **Categories**:  
-  - **0**: No DR (Healthy)  
-  - **1**: Mild DR  
-  - **2**: Moderate DR  
-  - **3**: Severe DR  
-  - **4**: Proliferative DR  
+  - 🟢 **0**: No DR (Healthy)  
+  - 🟡 **1**: Mild DR  
+  - 🟠 **2**: Moderate DR  
+  - 🔴 **3**: Severe DR  
+  - 🔥 **4**: Proliferative DR  
 - **Format**: JPEG/PNG images with structured CSV metadata.  
+
+---
 
 ## 📁 File Structure  
 ```
@@ -25,11 +34,13 @@ This project was developed for the **Infyma AI Hackathon 2025**. It focuses on d
 │   ├── requirements.txt   # Dependencies  
 ```
 
+---
+
 ## 🛠 Installation  
 1. **Clone the repository**:  
    ```bash
-   git clone https://github.com/ZayanRashid295/Infyma.git
-   cd Infyma
+   git clone https://github.com/Tuba-Islam/InfymaProject.git
+   cd InfymaProject
    ```
 2. **Install dependencies**:  
    ```bash
@@ -37,43 +48,67 @@ This project was developed for the **Infyma AI Hackathon 2025**. It focuses on d
    ```
 3. **Download and place the dataset** in the `data/` directory.  
 
-## 📊 Model Pipeline  
-### 1️⃣ **Data Processing & Augmentation**   
-- The dataset is **preprocessed** by selecting **50% of images per class** for training and validation.  
-- **Test set remains unchanged** as provided in the dataset.  
-- Apply **image resizing, normalization, and augmentation** (rotation, flipping, contrast adjustments).  
-  
+---
 
-### 2️⃣ **Building the Model**  
-- **Model Architecture**: Vision Transformer (ViT) with Transfer Learning.  
-- **Optimizer**: Adam with learning rate scheduling.  
-- **Loss Function**: Categorical Cross-Entropy.  
+## 📊 Model Pipeline  
+
+### 1️⃣ **Data Processing & Augmentation**   
+✅ **Preprocessing**: Resizing images to **224x224 pixels**  
+✅ **Augmentation**: Rotation, Zoom, Horizontal Flip  
+✅ **Balanced Training Set**: 50% of images per class selected  
+
+### 2️⃣ **Vision Transformer (ViT) Model**  
+- **Patch Size:** `16x16`  
+- **Transformer Layers:** `8`  
+- **Multi-Head Attention Heads:** `8`  
+- **MLP Layers:** `[128, 64]`  
+- **Final Activation:** Softmax (5-class classification)  
 
 ### 3️⃣ **Model Training**  
-Run the following command to train the model:  
+To train the model, run:  
 ```bash
 jupyter notebook notebooks/model_training.ipynb
 ```
-- Trains for **10 epochs**.  
-- Uses **early stopping & batch normalization**.  
-- Saves the trained model as `.h5`.  
+- **Optimizer:** `Adam` (with learning rate scheduling)  
+- **Loss Function:** `Sparse Categorical Crossentropy`  
+- **Epochs:** `20`  
+- **Batch Size:** `32`  
 
-### 4️⃣ **Evaluation & Explainability**  
-- **Metrics**: F1-score, Precision, Recall.  
-- **Model Explainability**: Uses **Grad-CAM** to visualize affected areas in retinal images.  
-- **Computational Efficiency**: Optimized inference speed using model quantization.  
+---
+
+## 📊 Evaluation & Explainability  
+🔹 **Overall Accuracy:** `35%`  
+🔹 **Best Performance:** **No DR (72% recall), Proliferative DR (68% recall)**  
+🔹 **Weakest Classes:** **Moderate & Severe DR (low recall, often misclassified)**  
+
+### **🔹 Precision, Recall, and F1-score:**
+| Class | Precision | Recall | F1-score | Support |
+|-------|------------|--------|-----------|---------|
+| **No DR (Healthy)** | 0.44 | **0.72** | 0.54 | 1000 |
+| **Mild DR** | 0.31 | 0.17 | 0.22 | 971 |
+| **Moderate DR** | 0.21 | 0.09 | 0.12 | 1000 |
+| **Severe DR** | 0.32 | 0.08 | 0.13 | 1000 |
+| **Proliferative DR** | 0.32 | **0.68** | 0.44 | 1000 |
+
+📌 **Model Explainability:**  
+- Uses **Grad-CAM** to visualize affected areas in retinal images.  
+- Computational efficiency optimized using **model quantization**.  
+
+---
 
 ## 🏆 Evaluation Criteria  
 Your submission is judged based on:  
-- **40% Accuracy & Performance**: Model precision & recall.  
-- **20% Explainability**: Interpretation of predictions.  
-- **20% Computational Efficiency**: Speed & optimization.  
-- **20% Innovation**: Hybrid models, novel architectures.  
+✔️ **40% Accuracy & Performance**: Model precision & recall  
+✔️ **20% Explainability**: Interpretation of predictions  
+✔️ **20% Computational Efficiency**: Speed & optimization  
+✔️ **20% Innovation**: Hybrid models, novel architectures  
+
+---
 
 ## 🚀 Deployment  
-You can deploy the model using:  
-To deploy the model for real-time predictions:
+The trained model can be **deployed for real-time predictions**.  
 
+### **🔹 Steps to Deploy (Streamlit)**
 1. Install dependencies:
    ```bash
    pip install streamlit tensorflow numpy opencv-python pillow
@@ -83,16 +118,12 @@ To deploy the model for real-time predictions:
    streamlit run app.py
    ```
 3. Upload a **retinal image**, and the app will classify its severity.
-## 🖼️ Sample Output (App Working)
-Here is a preview of the app running with a test image:
 
-![Diabetic Retinopathy Detection App](ModelWorking.png)
+### **🖼️ Sample Output (App Working)**
+![Demo](record.gif)  
+📌 *Upload a retinal image to get a prediction!*  
 
-📌 *Upload a retinal image to get a prediction!*
-
-
-
-(If Streamlit or Flask implementation is added)  
+---
 
 ## 📜 Hackathon Rules & Guidelines  
 ✅ **Allowed Frameworks**: TensorFlow, PyTorch, OpenCV, FastAI, Scikit-Learn.  
@@ -101,6 +132,8 @@ Here is a preview of the app running with a test image:
   - Model Weights (`.h5` or `.pt`)  
   - Short Report (`report.pdf`)  
 ✅ **Plagiarism**: Unauthorized use of existing solutions will lead to disqualification.  
+
+---
 
 ## 📤 Submission Instructions  
 1. **Push your project to GitHub**.  
@@ -112,13 +145,22 @@ Here is a preview of the app running with a test image:
    - ✅ `requirements.txt` (Dependencies)  
    - ✅ `report.pdf` (Explaining approach)  
 
+---
+
 ## 📜 License  
 This project is open-source and available under the **MIT License**.  
+```
 
-  
+---
 
----  
-🔥 **Developed for Infyma AI Hackathon 2025**  
+### **📌 Next Steps**
+✅ **Go to GitHub and edit your `README.md` file**  
+✅ **Paste the copied text into the file**  
+✅ **Save the file and commit the changes**  
+✅ **Your new README will now be visible in your repository!**  
 
-## Evalvation and Results
+---
+
+### **🚀 Done! Your README is Now Fully Updated!** 😊  
+Let me know if you need any more changes! 🚀🔥
 
