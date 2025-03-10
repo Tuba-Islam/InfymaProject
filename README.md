@@ -96,8 +96,14 @@ Run the web app:
 
     Upload a retinal image, and the app will classify its severity.
 
-🖼️ Sample Output (App Working)
-Demo GIF:
+
+### **🖼️ Sample Output (App Working)**
+#### **Demo GIF:**
+![Demo](record.gif)
+
+#### **Model Output Example:**
+![Model Output](ModelWorking.png)
+
 
 Model Output Example:
 
