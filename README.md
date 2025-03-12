@@ -36,7 +36,7 @@ This project was developed for the **Infyma AI Hackathon 2025**. It focuses on d
 
 ✅ Preprocessing: Resizing images to 224x224 pixels
 ✅ Augmentation: Rotation, Zoom, Horizontal Flip
-✅ Balanced Training Set: 50% of images per class selected
+✅ Balanced Training Set: 35% of images per class selected
 2️⃣ Vision Transformer (ViT) Model
 
     Patch Size: 16x16
